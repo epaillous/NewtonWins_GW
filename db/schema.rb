@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171216223451) do
+ActiveRecord::Schema.define(version: 20171217143843) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -77,6 +77,17 @@ ActiveRecord::Schema.define(version: 20171216223451) do
     t.decimal "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.integer "departure_id"
+    t.integer "arrival_id"
+    t.integer "transport_mode"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["arrival_id"], name: "index_trips_on_arrival_id"
+    t.index ["departure_id"], name: "index_trips_on_departure_id"
   end
 
 end

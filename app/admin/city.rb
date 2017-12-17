@@ -4,7 +4,7 @@ ActiveAdmin.register City do
 	form do |f|
 		f.inputs "General" do
 			f.input :name
-			f.input :country
+			f.input :country, include_blank: false
 		end
 		f.inputs "Coordinates", for: [:point, city.point || Point.new] do |p|
 			p.input :latitude

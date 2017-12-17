@@ -4,7 +4,7 @@ ActiveAdmin.register Country do
 	form do |f|
 		f.inputs "General" do
 			f.input :name
-			f.input :continent
+			f.input :continent, include_blank: false
 		end
 		f.inputs "Coordinates", for: [:point, country.point || Point.new] do |p|
 			p.input :latitude
