@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'activeadmin'
 gem 'devise'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'active_admin_editor', github: 'ejholmes/active_admin_editor'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171217143843) do
+ActiveRecord::Schema.define(version: 20171219213919) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -41,6 +44,19 @@ ActiveRecord::Schema.define(version: 20171217143843) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.text "content"
+    t.string "title"
+    t.string "subtitle"
+    t.date "date"
+    t.boolean "published", default: false
+    t.string "main_image_url"
+    t.bigint "point_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["point_id"], name: "index_articles_on_point_id"
   end
 
   create_table "cities", force: :cascade do |t|

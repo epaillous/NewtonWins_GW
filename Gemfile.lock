@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/ejholmes/active_admin_editor.git
+  revision: 86f964be3071cd938c3cd17ad00df94ece3a50c0
+  specs:
+    active_admin_editor (1.1.0)
+      activeadmin (>= 0.4.0)
+      ejs
+      rails (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -90,6 +99,7 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
+    ejs (1.1.1)
     erubi (1.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -245,6 +255,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_admin_editor!
   active_model_serializers (~> 0.10.0)
   activeadmin
   byebug
