@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :trips, only: [:index]
   resources :articles, only: [:index, :show]
+  resources :menu, only: [:index]
 
 end
