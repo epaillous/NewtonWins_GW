@@ -1,9 +1,10 @@
 ActiveAdmin.register Continent do
-  permit_params :name, point_attributes: [:id, :latitude, :longitude]
+  permit_params :name, :picto_url, point_attributes: [:id, :latitude, :longitude]
 
   form do |f|
     f.inputs "General" do
      f.input :name
+     f.input :picto_url
    end
    f.inputs "Coordinates", for: [:point, continent.point || Point.new] do |p|
     p.input :latitude
@@ -15,6 +16,7 @@ end
 show do
   attributes_table do
     row :name
+    row :picto_url
     row :point do continent
       continent.point.pretty_label
     end
