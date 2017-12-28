@@ -29,6 +29,7 @@ ActiveAdmin.register Country do
     selectable_column
     id_column
     column :name
+    column :code
     column :continent
     column :point do |country|
      country.point.pretty_label
