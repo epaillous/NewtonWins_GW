@@ -4,5 +4,8 @@ Rails.application.routes.draw do
   resources :trips, only: [:index]
   resources :articles, only: [:index, :show]
   resources :menu, only: [:index]
+  resources :points do
+    resources :media, only: [:index]
+  end
 
 end
