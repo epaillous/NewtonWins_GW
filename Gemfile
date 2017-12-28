@@ -32,7 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'rack-cors'
-
+gem 'aws-sdk'
 gem 'activeadmin'
 gem 'devise'
 gem 'active_model_serializers', '~> 0.10.0'
