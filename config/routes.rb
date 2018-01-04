@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   resources :points do
     resources :media, only: [:index]
   end
+  resources :suggestion_types, only: [:index]
+  resources :suggestions, only: [:create]
 
 end
