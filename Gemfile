@@ -37,6 +37,8 @@ gem 'activeadmin'
 gem 'devise'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'active_admin_editor', github: 'ejholmes/active_admin_editor'
+gem 'devise_token_auth'
+gem 'omniauth-facebook'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
