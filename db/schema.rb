@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(version: 20180104215747) do
     t.string "unconfirmed_email"
     t.string "first_name"
     t.string "last_name"
+    t.string "name"
     t.string "nickname"
     t.string "image"
     t.string "email"
