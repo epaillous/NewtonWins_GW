@@ -1,5 +1,11 @@
 class SuggestionsController < AuthenticatedController
 
+
+  def index
+    @suggestions = Suggestion.where(user_id: current_user.id)
+    render json: @suggestions
+  end
+
   def create
     @suggestion = Suggestion.new(permitted_params)
     @suggestion.user = current_user
