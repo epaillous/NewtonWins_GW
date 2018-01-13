@@ -1,9 +1,10 @@
-class SuggestionsController < ApplicationController
+class SuggestionsController < AuthenticatedController
 
   def create
     @suggestion = Suggestion.new(permitted_params)
+    @suggestion.user = current_user
     if !@suggestion.save
-      render json: {error: @suggestion.error}, status: :unprocessable_entity
+      render json: {error: @suggestion.errors}, status: :unprocessable_entity
     else
       render json: @suggestion
     end
@@ -13,7 +14,7 @@ class SuggestionsController < ApplicationController
 private
   def permitted_params
     params.require(:suggestion).permit(:name, :comment, :suggestion_type_id, :address,
-      point_attributes: [:id, :latitude, :longitude])
+      :user_id, point_attributes: [:id, :latitude, :longitude])
   end
 
 end

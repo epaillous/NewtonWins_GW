@@ -1,4 +1,4 @@
-class SuggestionTypesController < ApplicationController
+class SuggestionTypesController < AuthenticatedController
 
     def index
     @types = SuggestionType.all

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180104215747) do
+ActiveRecord::Schema.define(version: 20180112221048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,8 +123,10 @@ ActiveRecord::Schema.define(version: 20180104215747) do
     t.bigint "suggestion_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["point_id"], name: "index_suggestions_on_point_id"
     t.index ["suggestion_type_id"], name: "index_suggestions_on_suggestion_type_id"
+    t.index ["user_id"], name: "index_suggestions_on_user_id"
   end
 
   create_table "trips", force: :cascade do |t|
