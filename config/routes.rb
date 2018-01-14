@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     resources :media, only: [:index]
   end
   resources :suggestion_types, only: [:index]
-  resources :suggestions, only: [:index, :create]
+  resources :suggestions, only: [:index, :create, :update, :destroy]
 
 end

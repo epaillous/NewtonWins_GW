@@ -14,7 +14,20 @@ class SuggestionsController < AuthenticatedController
     else
       render json: @suggestion
     end
+  end
 
+  def update
+    @suggestion = Suggestion.find(params[:id])
+    if !@suggestion.update(permitted_params)
+      render json: {error: @suggestion.errors}, status: :unprocessable_entity
+    else
+      render json: @suggestion
+    end
+  end
+
+  def destroy
+    Suggestion.find(params[:id]).destroy
+    render json: {}, status: :ok
   end
 
 private
