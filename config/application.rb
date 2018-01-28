@@ -16,7 +16,7 @@ module NewtonWinsGw
     # -- all .rb files in that directory are automatically loaded.
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'https://newton-wins.herokuapp.com'
+        origins 'https://newton-wins.herokuapp.com', 'https://www.saucepestorosso.com'
         resource '*',
          headers: :any, :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
          methods: [:get, :post, :options, :put, :delete]
