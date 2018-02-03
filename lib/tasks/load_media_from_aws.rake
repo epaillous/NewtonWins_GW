@@ -19,6 +19,8 @@ bucket = s3.bucket('newton-wins')
 bucket.objects.each do |object|
   name_file = object.key
   if name_file.ends_with?('.JPG')
+    media = Medium.find_by_url(object.public_url)
+    return if media 
     city_name = name_file.split('/')[2].downcase.sub('_', ' ')
     city = City.where('lower(name) = ?', city_name).first
     if city 
