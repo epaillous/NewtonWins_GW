@@ -10,18 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180112221048) do
+ActiveRecord::Schema.define(version: 20180306202724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "unaccent"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.string "author_type"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
@@ -61,8 +62,8 @@ ActiveRecord::Schema.define(version: 20180112221048) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
-    t.integer "point_id"
-    t.integer "country_id"
+    t.bigint "point_id"
+    t.bigint "country_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["country_id"], name: "index_cities_on_country_id"
@@ -73,15 +74,15 @@ ActiveRecord::Schema.define(version: 20180112221048) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "point_id"
+    t.bigint "point_id"
     t.string "picto_url"
     t.index ["point_id"], name: "index_continents_on_point_id"
   end
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
-    t.integer "point_id"
-    t.integer "continent_id"
+    t.bigint "point_id"
+    t.bigint "continent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "code"
@@ -130,8 +131,8 @@ ActiveRecord::Schema.define(version: 20180112221048) do
   end
 
   create_table "trips", force: :cascade do |t|
-    t.integer "departure_id"
-    t.integer "arrival_id"
+    t.bigint "departure_id"
+    t.bigint "arrival_id"
     t.integer "transport_mode"
     t.datetime "date"
     t.datetime "created_at", null: false
@@ -171,4 +172,7 @@ ActiveRecord::Schema.define(version: 20180112221048) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "continents", "points"
+  add_foreign_key "trips", "points", column: "arrival_id"
+  add_foreign_key "trips", "points", column: "departure_id"
 end

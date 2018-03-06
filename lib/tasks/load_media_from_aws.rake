@@ -20,11 +20,12 @@ bucket.objects.each do |object|
   name_file = object.key
   if name_file.ends_with?('.JPG')
     media = Medium.find_by_url(object.public_url)
-    exit if media 
-    city_name = name_file.split('/')[2].downcase.sub('_', ' ')
-    city = City.where('lower(name) = ?', city_name).first
-    if city 
-      Medium.create(point_id: city.point.id, url: object.public_url, title: city.name)
+    if !media 
+      city_name = name_file.split('/')[2].downcase.gsub('_', ' ')
+      city = City.where('unaccent(lower(name)) = unaccent(?)', city_name).first
+      if city 
+        Medium.create(point_id: city.point.id, url: object.public_url, title: city.name)
+      end
     end
   end
 end
